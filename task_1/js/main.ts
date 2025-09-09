@@ -5,16 +5,21 @@ interface Teacher {
   fullTimeEmployee: boolean;
   yearsOfExperience?: number;
   location: string;
-  [key: string]: any; // permite agregar cualquier otra propiedad
+  [key: string]: any;
 }
 
-// 2. Crear un objeto de tipo Teacher
-const teacher3: Teacher = {
+// 2. Directors interface extends Teacher
+interface Directors extends Teacher {
+  numberOfReports: number;
+}
+
+// 3. Crear objeto de tipo Directors
+const director1: Directors = {
   firstName: 'John',
   lastName: 'Doe',
-  fullTimeEmployee: false,
   location: 'London',
-  contract: false, // propiedad adicional
+  fullTimeEmployee: true,
+  numberOfReports: 17,
 };
 
-console.log(teacher3);
+console.log(director1);
