@@ -1,0 +1,16 @@
+{
+  "name": "typescript-task-5",
+  "version": "1.0.0",
+  "description": "Task 5 for TypeScript",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "ts-loader": "^9.2.8",
+    "typescript": "^4.5.4",
+    "webpack": "^5.51.1",
+    "webpack-cli": "^4.8.0"
+  }
+}
