@@ -1,25 +1,35 @@
-// 1. Teacher interface
+// Interfaces
 interface Teacher {
-  readonly firstName: string;
-  readonly lastName: string;
-  fullTimeEmployee: boolean;
-  yearsOfExperience?: number;
-  location: string;
-  [key: string]: any;
+  workTeacherTasks(): string;
 }
 
-// 2. Directors interface extends Teacher
-interface Directors extends Teacher {
-  numberOfReports: number;
+interface Director {
+  workDirectorTasks(): string;
 }
 
-// 3. Crear objeto de tipo Directors
-const director1: Directors = {
-  firstName: 'John',
-  lastName: 'Doe',
-  location: 'London',
-  fullTimeEmployee: true,
-  numberOfReports: 17,
-};
+function createEmployee(salary: number | string): Teacher | Director {
+  if (typeof salary === 'number' && salary < 500) {
+    return {
+      workTeacherTasks: () => 'Getting to work',
+    };
+  } else {
+    return {
+      workDirectorTasks: () => 'Getting to director tasks',
+    };
+  }
+}
 
-console.log(director1);
+function isDirector(employee: Teacher | Director): employee is Director {
+  return (employee as Director).workDirectorTasks !== undefined;
+}
+
+function executeWork(employee: Teacher | Director): string {
+  if (isDirector(employee)) {
+    return employee.workDirectorTasks();
+  } else {
+    return employee.workTeacherTasks();
+  }
+}
+
+console.log(executeWork(createEmployee(200)));
+console.log(executeWork(createEmployee(1000)));
